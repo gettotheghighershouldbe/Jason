@@ -6,8 +6,4 @@ pygame.init()
 
 print("终于可以开始写代码了")
 
-
-
-
-
 pygame.quit()
