@@ -30,8 +30,17 @@ while True:
     # 可以指定循环体内部的代码执行的频率
     clock.tick(60)
 
+    # 捕获事件
+    event_list = pygame.event.get()
+    if len(event_list) > 0:
+        print(event_list)
+
     # 2. 修改飞机的位置
     hero_rect.y -= 1
+
+    # 判断飞机的位置
+    if hero_rect.y <= 0:
+        hero_rect.y = 700
 
     # 3. 调用blit方法绘制图像
     screen.blit(bg, (0, 0))

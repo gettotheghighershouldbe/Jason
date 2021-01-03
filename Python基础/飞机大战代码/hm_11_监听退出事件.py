@@ -30,8 +30,26 @@ while True:
     # 可以指定循环体内部的代码执行的频率
     clock.tick(60)
 
+    # 监听事件
+    event_list = pygame.event.get()
+    for event in event_list:
+
+        # 判断事件类型是否是退出事件:
+        if event.type == pygame.QUIT:
+            print("游戏退出")
+
+            # quit() 卸载所有的模块
+            pygame.quit()
+
+            # exit() 直接终止当前正在执行的程序
+            exit()
+
     # 2. 修改飞机的位置
     hero_rect.y -= 1
+
+    # 判断飞机的位置
+    if hero_rect.y <= 0:
+        hero_rect.y = 700
 
     # 3. 调用blit方法绘制图像
     screen.blit(bg, (0, 0))
