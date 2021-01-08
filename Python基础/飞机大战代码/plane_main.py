@@ -1,7 +1,7 @@
 import pygame
 from plane_sprites import *
-
-
+# pygame.init()
+# pygame的init()什么时候需要呢？又要放在哪里呢？
 class PlaneGame():
     """飞机大战主游戏"""
 
@@ -13,6 +13,9 @@ class PlaneGame():
         self.clock = pygame.time.Clock()
         # 3.调用私有方法,精灵和精灵组的创建
         self.__createsprites()
+
+        # 4.设置定时器事件 - 创建敌机 1s
+        pygame.time.set_timer(CREATE_ENEMY_EVENT, 1000)
 
     def __createsprites(self):
 
@@ -44,6 +47,8 @@ class PlaneGame():
             # 判断是否退出游戏
             if event.type == pygame.QUIT:
                 PlaneGame.__game_over()
+            elif event.type == CREATE_ENEMY_EVENT:
+                print("敌机出场")
 
     def __check_collide(self):
         pass

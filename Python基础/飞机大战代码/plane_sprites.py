@@ -1,9 +1,13 @@
 import pygame
-
+pygame.init()
 # 屏幕大小的常量
 SCREEN_RECT = pygame.Rect(0, 0, 480, 700)
 # 刷新的帧率
 FRAME_PER_SEC = 60
+
+print("看看是不是连这个也会导入")
+# 创建敌机的定时器常量
+CREATE_ENEMY_EVENT = pygame.USEREVENT
 
 class GameSpirite(pygame.sprite.Sprite):
     """飞机大战游戏精灵"""
@@ -47,6 +51,22 @@ class Background(GameSpirite):
         # if self.rect.y >= self.rect.height: 也是在做个实验
             self.rect.y = -self.rect.height
 
+class Enemy(GameSpirite):
+    """敌机精灵"""
+
+    def __init__(self):
+
+        # 1.调用父类方法,创建敌机精灵,同时指定敌机图片
+        # 2.指定敌机的初始随机速度
+        # 3.指定敌机的初始随机位置
+        pass
+    def update(self):
+
+        # 1.调用父类方法,保持垂直方向的飞行
+
+        # 2.判断是否飞出屏幕,如果是,需要从精灵组删除敌机
+
+        pass
 
 
 
