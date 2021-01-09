@@ -57,15 +57,19 @@ class Enemy(GameSpirite):
     def __init__(self):
 
         # 1.调用父类方法,创建敌机精灵,同时指定敌机图片
+        super().__init__("./Images/enemy1.png")
         # 2.指定敌机的初始随机速度
+
         # 3.指定敌机的初始随机位置
+
         pass
     def update(self):
 
         # 1.调用父类方法,保持垂直方向的飞行
-
+        super().update()
         # 2.判断是否飞出屏幕,如果是,需要从精灵组删除敌机
-
+        if self.rect.y > SCREEN_RECT.height:
+            print("飞出屏幕,需要从精灵组删除")
         pass
 
 
