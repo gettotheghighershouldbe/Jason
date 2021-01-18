@@ -1,3 +1,4 @@
+import random
 import pygame
 pygame.init()
 # 屏幕大小的常量
@@ -58,10 +59,16 @@ class Enemy(GameSpirite):
 
         # 1.调用父类方法,创建敌机精灵,同时指定敌机图片
         super().__init__("./Images/enemy1.png")
+
         # 2.指定敌机的初始随机速度
+        self.speed = random.randint(1, 3)
 
         # 3.指定敌机的初始随机位置
+        self.rect.bottom = 0
 
+        max_x = SCREEN_RECT.width - self.rect.width
+
+        self.rect.x = random.randint(0, max_x)
         pass
     def update(self):
 
@@ -70,7 +77,11 @@ class Enemy(GameSpirite):
         # 2.判断是否飞出屏幕,如果是,需要从精灵组删除敌机
         if self.rect.y > SCREEN_RECT.height:
             print("飞出屏幕,需要从精灵组删除")
-        pass
+            # kill方法可以将精灵从所有组中移出,精灵就会被自动销毁
+            self.kill()
+
+    def __del__(self):
+        print("敌机挂了 %s" % self.rect)
 
 
 
